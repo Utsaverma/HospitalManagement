@@ -1,0 +1,39 @@
+CREATE DATABASE raintree;
+
+drop table raintree.insurance;
+drop table raintree.patient;
+
+CREATE TABLE raintree.patient (
+_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+pn VARCHAR(11) DEFAULT NULL,
+first VARCHAR(15) DEFAULT NULL,
+last VARCHAR(25) DEFAULT NULL,
+dob Date DEFAULT NULL
+);
+
+INSERT INTO raintree.patient (pn, first, last,dob) VALUES ('000000001', 'John', 'Smith','1990-03-05');
+INSERT INTO raintree.patient (pn, first, last,dob) VALUES ('000000002', 'John', 'Doe','1991-05-04');
+INSERT INTO raintree.patient (pn, first, last,dob) VALUES ('000000003', 'Jack', 'Hill','1992-03-04');
+INSERT INTO raintree.patient (pn, first, last,dob) VALUES ('000000004', 'Jhonny', 'Dan','1993-11-12');
+INSERT INTO raintree.patient (pn, first, last,dob) VALUES ('000000005', 'Mathew', 'Hayden','1994-07-02');
+
+CREATE TABLE raintree.insurance (
+_id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+patient_id INT(10) UNSIGNED NOT NULL,
+iname VARCHAR(40) DEFAULT NULL,
+from_date Date DEFAULT NULL,
+to_date Date DEFAULT NULL,
+CONSTRAINT FK_PatientID FOREIGN KEY (patient_id)
+REFERENCES raintree.patient(_id)
+);
+
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (1, 'Medicare', '2009-01-01','2010-01-01');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (1, 'Blue Cross', '2009-01-06','2010-01-06');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (2, 'Medicare', '2009-01-01','2010-01-01');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (2, 'Blue Cross', '2009-01-06','2010-01-06');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (3, 'Medicare', '2009-01-02','2010-01-02');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (3, 'Blue Cross', '2009-01-07','2010-01-07');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (4, 'Medicare', '2010-01-01','2011-01-02');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (4, 'Blue Cross', '2010-01-06','2011-03-06');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (5, 'Medicare', '2010-01-01','2011-02-01');
+INSERT INTO raintree.insurance (patient_id, iname, from_date,to_date) VALUES (5, 'Blue Cross', '2010-01-06','2011-01-07');
