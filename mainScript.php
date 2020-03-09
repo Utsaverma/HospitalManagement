@@ -1,7 +1,11 @@
 <?php 
 include('Patient.php');
 
-$patient=new Patient('000000001');
-$patient->returnInsuaranceDetails('02/02/2009');
+$patientNumber='000000001';
+$usShortDate='02/02/2009';
+
+
+$patient=new Patient($patientNumber);
+$patient->returnInsuaranceDetails($usShortDate);
 
 ?> 
